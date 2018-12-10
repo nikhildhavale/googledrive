@@ -21,6 +21,9 @@
 		4BA5035421BE4073008E2CC4 /* GoogleSignInShared.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4BA5035321BE4073008E2CC4 /* GoogleSignInShared.swift */; };
 		4BA5035621BE4D2E008E2CC4 /* GoogleUserProfile.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4BA5035521BE4D2E008E2CC4 /* GoogleUserProfile.swift */; };
 		4BA5035821BE53D5008E2CC4 /* Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4BA5035721BE53D5008E2CC4 /* Extension.swift */; };
+		4BA5035C21BE6461008E2CC4 /* ListOfFilesTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4BA5035B21BE6461008E2CC4 /* ListOfFilesTableViewController.swift */; };
+		4BA5036121BE64CB008E2CC4 /* FileItemTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4BA5035F21BE64CB008E2CC4 /* FileItemTableViewCell.swift */; };
+		4BA5036221BE64CB008E2CC4 /* FileItemTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4BA5036021BE64CB008E2CC4 /* FileItemTableViewCell.xib */; };
 		71962EB98B334AC698F541CE /* Pods_GoogleDrive.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 294E6FA7893EAD6D137ADA48 /* Pods_GoogleDrive.framework */; };
 /* End PBXBuildFile section */
 
@@ -64,6 +67,9 @@
 		4BA5035321BE4073008E2CC4 /* GoogleSignInShared.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoogleSignInShared.swift; sourceTree = "<group>"; };
 		4BA5035521BE4D2E008E2CC4 /* GoogleUserProfile.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoogleUserProfile.swift; sourceTree = "<group>"; };
 		4BA5035721BE53D5008E2CC4 /* Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extension.swift; sourceTree = "<group>"; };
+		4BA5035B21BE6461008E2CC4 /* ListOfFilesTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListOfFilesTableViewController.swift; sourceTree = "<group>"; };
+		4BA5035F21BE64CB008E2CC4 /* FileItemTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FileItemTableViewCell.swift; sourceTree = "<group>"; };
+		4BA5036021BE64CB008E2CC4 /* FileItemTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = FileItemTableViewCell.xib; sourceTree = "<group>"; };
 		50B531527E4CDAF159FB0219 /* Pods-GoogleDrive.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-GoogleDrive.release.xcconfig"; path = "Pods/Target Support Files/Pods-GoogleDrive/Pods-GoogleDrive.release.xcconfig"; sourceTree = "<group>"; };
 		6D9CFC6A6CFE1D1252B039D6 /* Pods-GoogleDriveTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-GoogleDriveTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-GoogleDriveTests/Pods-GoogleDriveTests.release.xcconfig"; sourceTree = "<group>"; };
 		911427161FDA653C7E67B0E5 /* Pods-GoogleDrive.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-GoogleDrive.debug.xcconfig"; path = "Pods/Target Support Files/Pods-GoogleDrive/Pods-GoogleDrive.debug.xcconfig"; sourceTree = "<group>"; };
@@ -150,6 +156,9 @@
 				4BA5032021BE29D2008E2CC4 /* AppDelegate.swift */,
 				4BA5032221BE29D2008E2CC4 /* LoginViewController.swift */,
 				4BA5032421BE29D2008E2CC4 /* Main.storyboard */,
+				4BA5035B21BE6461008E2CC4 /* ListOfFilesTableViewController.swift */,
+				4BA5035F21BE64CB008E2CC4 /* FileItemTableViewCell.swift */,
+				4BA5036021BE64CB008E2CC4 /* FileItemTableViewCell.xib */,
 				4BA5032A21BE29D4008E2CC4 /* Assets.xcassets */,
 				4BA5032C21BE29D4008E2CC4 /* LaunchScreen.storyboard */,
 				4BA5032F21BE29D4008E2CC4 /* Info.plist */,
@@ -305,6 +314,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4BA5036221BE64CB008E2CC4 /* FileItemTableViewCell.xib in Resources */,
 				4BA5032E21BE29D4008E2CC4 /* LaunchScreen.storyboard in Resources */,
 				4BA5032B21BE29D4008E2CC4 /* Assets.xcassets in Resources */,
 				4BA5032621BE29D2008E2CC4 /* Main.storyboard in Resources */,
@@ -451,6 +461,8 @@
 			files = (
 				4BA5032321BE29D2008E2CC4 /* LoginViewController.swift in Sources */,
 				4BA5032921BE29D2008E2CC4 /* GoogleDrive.xcdatamodeld in Sources */,
+				4BA5036121BE64CB008E2CC4 /* FileItemTableViewCell.swift in Sources */,
+				4BA5035C21BE6461008E2CC4 /* ListOfFilesTableViewController.swift in Sources */,
 				4BA5035821BE53D5008E2CC4 /* Extension.swift in Sources */,
 				4BA5032121BE29D2008E2CC4 /* AppDelegate.swift in Sources */,
 				4BA5035621BE4D2E008E2CC4 /* GoogleUserProfile.swift in Sources */,

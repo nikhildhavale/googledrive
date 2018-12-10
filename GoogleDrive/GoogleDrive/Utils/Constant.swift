@@ -15,3 +15,6 @@ struct Keys {
     static let userInfo = "userInfo"
 
 }
+struct Identifiers {
+    static let fileItemIdentifier = "fileItemIdentifier"
+}
