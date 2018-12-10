@@ -17,37 +17,38 @@ class LoginViewController: UIViewController,GIDSignInUIDelegate{
         // Do any additional setup after loading the view, typically from a nib.
         GIDSignIn.sharedInstance()?.uiDelegate = self
         NotificationCenter.default.addObserver(self, selector: #selector(self.signInDone(notificaton:)), name:  NSNotification.Name( Keys.googleLogin), object: nil)
+
         setUpUI()
         
         
     }
     @objc func signInDone(notificaton:Notification){
-        signInButton.isHidden = true
-        signOut.isHidden = false
+        toggleSignInSignOutUI()
+
     }
     func setUpUI(){
         signInButton = GIDSignInButton(frame: CGRect.zero)
-        signInButton.translatesAutoresizingMaskIntoConstraints = false
-        self.view.addSubview(signInButton)
-        self.view.addSubview(signOut)
-        signOut.translatesAutoresizingMaskIntoConstraints = false
+        signOut.addTarget(self, action: #selector(signOutClicked), for: .touchUpInside)
         signOut.setTitle("Sign Out", for: .normal)
         signOut.tintColor = UIColor.blue
-        signOut.addTarget(self, action: #selector(self.signOutClicked), for: .touchUpInside)
-         NSLayoutConstraint.activate([signInButton.centerXAnchor.constraint(equalTo: self.view.centerXAnchor),signInButton.centerYAnchor.constraint(equalTo: self.view.centerYAnchor),
-                                      signOut.centerXAnchor.constraint(equalTo: self.view.centerXAnchor),
-                                      signOut.centerYAnchor.constraint(equalTo: self.view.centerYAnchor)
-                                      ])
-            signOut.isHidden =  (UserDefaults.standard.object(forKey: Keys.userInfo) == nil)
-            signInButton.isHidden = !(UserDefaults.standard.object(forKey: Keys.userInfo) == nil)
+        toggleSignInSignOutUI()
         
-        
+    }
+    func toggleSignInSignOutUI(){
+        if UserDefaults.getCustomObjectfor(Key: Keys.userInfo) == nil {
+            self.navigationItem.rightBarButtonItem = UIBarButtonItem(customView: signInButton)
+            
+        }
+        else{
+            self.navigationItem.rightBarButtonItem = UIBarButtonItem(customView: signOut)
+            
+        }
     }
     @objc func signOutClicked(){
         GIDSignIn.sharedInstance().signOut()
-        signInButton.isHidden = false
-        signOut.isHidden = true
         UserDefaults.standard.removeObject(forKey: Keys.userInfo)
+        toggleSignInSignOutUI()
+
     }
     func sign(inWillDispatch signIn: GIDSignIn!, error: Error!) {
         
