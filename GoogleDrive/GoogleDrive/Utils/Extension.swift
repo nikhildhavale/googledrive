@@ -9,13 +9,27 @@
 import Foundation
 extension UserDefaults{
     static func saveCustomObject(obj:Any,for key:String){
-        let ecodedObject = NSKeyedArchiver.archivedData(withRootObject: obj)
-        self.standard.set(ecodedObject, forKey: key)
+        do{
+            let ecodedObject = try NSKeyedArchiver.archivedData(withRootObject: obj, requiringSecureCoding: true)
+            self.standard.set(ecodedObject, forKey: key)
+        }
+        catch{
+            
+        }
+
     }
     static func getCustomObjectfor(Key:String)->Any?{
         guard let encodedObject = self.standard.object(forKey: Key) as? Data else {
             return nil
         }
-        return NSKeyedUnarchiver.unarchiveObject(with: encodedObject)
+        do{
+            return try NSKeyedUnarchiver.unarchiveTopLevelObjectWithData(encodedObject)
+
+        }
+        catch{
+            
+        }
+            return nil
+        
     }
 }

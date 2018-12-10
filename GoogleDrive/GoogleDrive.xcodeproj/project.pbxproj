@@ -154,10 +154,8 @@
 				4BA5032C21BE29D4008E2CC4 /* LaunchScreen.storyboard */,
 				4BA5032F21BE29D4008E2CC4 /* Info.plist */,
 				4BA5032721BE29D2008E2CC4 /* GoogleDrive.xcdatamodeld */,
-				4BA5035121BE38B1008E2CC4 /* Constant.swift */,
-				4BA5035321BE4073008E2CC4 /* GoogleSignInShared.swift */,
-				4BA5035521BE4D2E008E2CC4 /* GoogleUserProfile.swift */,
-				4BA5035721BE53D5008E2CC4 /* Extension.swift */,
+				4BA5035921BE54C1008E2CC4 /* Google */,
+				4BA5035A21BE54D9008E2CC4 /* Utils */,
 			);
 			path = GoogleDrive;
 			sourceTree = "<group>";
@@ -178,6 +176,24 @@
 				4BA5034521BE29D4008E2CC4 /* Info.plist */,
 			);
 			path = GoogleDriveUITests;
+			sourceTree = "<group>";
+		};
+		4BA5035921BE54C1008E2CC4 /* Google */ = {
+			isa = PBXGroup;
+			children = (
+				4BA5035321BE4073008E2CC4 /* GoogleSignInShared.swift */,
+				4BA5035521BE4D2E008E2CC4 /* GoogleUserProfile.swift */,
+			);
+			path = Google;
+			sourceTree = "<group>";
+		};
+		4BA5035A21BE54D9008E2CC4 /* Utils */ = {
+			isa = PBXGroup;
+			children = (
+				4BA5035721BE53D5008E2CC4 /* Extension.swift */,
+				4BA5035121BE38B1008E2CC4 /* Constant.swift */,
+			);
+			path = Utils;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
