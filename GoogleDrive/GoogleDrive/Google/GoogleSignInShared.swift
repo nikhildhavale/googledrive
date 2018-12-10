@@ -12,7 +12,7 @@ import UIKit
 class GoogleSignInShared:NSObject,GIDSignInDelegate {
    static var shared = GoogleSignInShared()
     func setupGoogleSignIn(){
-        GIDSignIn.sharedInstance()?.clientID = GoogleIds.clientId
+        GIDSignIn.sharedInstance()?.clientID = Google.clientId
         GIDSignIn.sharedInstance()?.delegate = self
     }
     func sign(_ signIn: GIDSignIn!, didSignInFor user: GIDGoogleUser!, withError error: Error!) {

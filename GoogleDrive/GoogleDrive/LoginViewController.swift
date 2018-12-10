@@ -17,7 +17,7 @@ class LoginViewController: UIViewController,GIDSignInUIDelegate{
         // Do any additional setup after loading the view, typically from a nib.
         GIDSignIn.sharedInstance()?.uiDelegate = self
         NotificationCenter.default.addObserver(self, selector: #selector(self.signInDone(notificaton:)), name:  NSNotification.Name( Keys.googleLogin), object: nil)
-
+        GIDSignIn.sharedInstance()?.scopes.append(Google.scope)
         setUpUI()
         
         
