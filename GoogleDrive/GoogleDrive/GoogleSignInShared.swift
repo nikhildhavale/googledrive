@@ -19,8 +19,14 @@ class GoogleSignInShared:NSObject,GIDSignInDelegate {
         if let error = error {
             print("\(error.localizedDescription)")
         } else {
-            UserDefaults.standard.set(user, forKey: Keys.userInfo)
-            NotificationCenter.default.post(name: NSNotification.Name( Keys.googleLogin), object: user)
+            let profile = GoogleUserProfile()
+            profile.firstName =  user.profile.name
+            profile.familyName = user.profile.familyName
+            profile.userEmail = user.profile.email
+            profile.id = user.userID
+            profile.token = user.authentication.idToken
+            UserDefaults.saveCustomObject(obj: profile, for: Keys.userInfo)
+            NotificationCenter.default.post(name: NSNotification.Name( Keys.googleLogin), object: profile)
         }
     }
     private override init() {
