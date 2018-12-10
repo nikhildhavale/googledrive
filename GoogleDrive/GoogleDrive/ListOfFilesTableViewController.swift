@@ -9,7 +9,8 @@
 import UIKit
 import GoogleAPIClientForREST
 class ListOfFilesTableViewController: UITableViewController {
-
+    let gtlDriveService = GTLRDriveService()
+    var fileArray = [GTLRDrive_File]()
     override func viewDidLoad() {
         super.viewDidLoad()
         self.setUpUI()
@@ -23,29 +24,37 @@ class ListOfFilesTableViewController: UITableViewController {
     }
     func gtlQuery(){
        // GTLRDriveQuery_FilesGet
+       // let query = GTLRQuery
         
+      let query =  GTLRDriveQuery_FilesList.query()
+        gtlDriveService.executeQuery(query, completionHandler: {(ticket,files,error) in
+            if  let fileList = files as? GTLRDrive_FileList {
+                self.fileArray.removeAll()
+                self.fileArray = fileList.files ?? [GTLRDrive_File]()
+                self.tableView.reloadData()
+            }
+            
+            
+        })
     }
     // MARK: - Table view data source
 
-    override func numberOfSections(in tableView: UITableView) -> Int {
-        // #warning Incomplete implementation, return the number of sections
-        return 0
-    }
+
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
-        return 0
+        return self.fileArray.count
     }
 
-    /*
+    
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "reuseIdentifier", for: indexPath)
+        let cell = tableView.dequeueReusableCell(withIdentifier: Identifiers.fileItemIdentifier, for: indexPath) as! FileItemTableViewCell
 
-        // Configure the cell...
+        cell.fileNameLabel.text = self.fileArray[indexPath.row].name
 
         return cell
     }
-    */
+ 
 
     /*
     // Override to support conditional editing of the table view.

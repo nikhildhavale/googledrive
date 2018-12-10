@@ -24,7 +24,15 @@ class LoginViewController: UIViewController,GIDSignInUIDelegate{
     }
     @objc func signInDone(notificaton:Notification){
         toggleSignInSignOutUI()
+        refreshListOfFiles()
 
+    }
+    func refreshListOfFiles(){
+        for child in self.children {
+            if let listOfFilesController = child as? ListOfFilesTableViewController {
+                listOfFilesController.gtlQuery()
+            }
+        }
     }
     func setUpUI(){
         signInButton = GIDSignInButton(frame: CGRect.zero)
@@ -41,6 +49,7 @@ class LoginViewController: UIViewController,GIDSignInUIDelegate{
         }
         else{
             self.navigationItem.rightBarButtonItem = UIBarButtonItem(customView: signOut)
+            refreshListOfFiles()
             
         }
     }
