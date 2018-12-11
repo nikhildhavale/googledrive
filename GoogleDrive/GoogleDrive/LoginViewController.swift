@@ -31,6 +31,7 @@ class LoginViewController: UIViewController,GIDSignInUIDelegate{
         for child in self.children {
             if let listOfFilesController = child as? ListOfFilesTableViewController {
                 listOfFilesController.gtlQuery()
+                break
             }
         }
     }

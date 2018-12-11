@@ -11,6 +11,7 @@ import GoogleSignIn
 import UIKit
 class GoogleSignInShared:NSObject,GIDSignInDelegate {
    static var shared = GoogleSignInShared()
+    var user:GIDGoogleUser?
     func setupGoogleSignIn(){
         GIDSignIn.sharedInstance()?.clientID = Google.clientId
         GIDSignIn.sharedInstance()?.delegate = self
@@ -19,14 +20,16 @@ class GoogleSignInShared:NSObject,GIDSignInDelegate {
         if let error = error {
             print("\(error.localizedDescription)")
         } else {
-            let profile = GoogleUserProfile()
-            profile.firstName =  user.profile.name
-            profile.familyName = user.profile.familyName
-            profile.userEmail = user.profile.email
-            profile.id = user.userID
-            profile.token = user.authentication.idToken
-            UserDefaults.saveCustomObject(obj: profile, for: Keys.userInfo)
-            NotificationCenter.default.post(name: NSNotification.Name( Keys.googleLogin), object: profile)
+//            let profile = GoogleUserProfile()
+//            profile.firstName =  user.profile.name
+//            profile.familyName = user.profile.familyName
+//            profile.userEmail = user.profile.email
+//            profile.id = user.userID
+//            profile.token = user.authentication.idToken
+            
+           // UserDefaults.saveCustomObject(obj: profile, for: Keys.userInfo)
+            self.user = user
+            NotificationCenter.default.post(name: NSNotification.Name( Keys.googleLogin), object: nil)
         }
     }
     private override init() {
