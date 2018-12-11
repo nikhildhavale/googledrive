@@ -28,7 +28,7 @@ class ListOfFilesTableViewController: UITableViewController {
        // let query = GTLRQuery
         
       let query =  GTLRDriveQuery_FilesList.query()
-        gtlDriveService.apiKey = Google.driveAPIKey
+        gtlDriveService.apiKey = GoogleSenstive.driveAPIKey
         
 //        if let userProfile = UserDefaults.getCustomObjectfor(Key: Keys.userInfo) as? GoogleUserProfile{
 //            query.includeTeamDriveItems = true
