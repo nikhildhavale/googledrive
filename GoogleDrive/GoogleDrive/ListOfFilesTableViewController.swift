@@ -4,7 +4,7 @@
 //
 //  Created by Nikhil Modi on 12/10/18.
 //  Copyright © 2018 Nikhil Dhavale. All rights reserved.
-//
+// https://stackoverflow.com/questions/46210827/google-drive-api-ios-permissions-of-gtlrdriveservice
 
 import UIKit
 import GoogleAPIClientForREST
@@ -15,7 +15,7 @@ class ListOfFilesTableViewController: UITableViewController {
         super.viewDidLoad()
         self.setUpUI()
         gtlDriveService.apiKey = GoogleSenstive.driveAPIKey
-
+        
     }
     
     func setUpUI(){
@@ -29,7 +29,10 @@ class ListOfFilesTableViewController: UITableViewController {
         
       let query =  GTLRDriveQuery_FilesList.query()
         gtlDriveService.apiKey = GoogleSenstive.driveAPIKey
-        gtlDriveService.authorizer = GoogleSignInShared.shared.user?.authentication.fetcherAuthorizer()
+        query.corpora = "user"
+//        query.teamDriveId = GoogleSignInShared.shared.user?.userID
+//        query.includeTeamDriveItems = true
+ //       gtlDriveService.authorizer = GoogleSignInShared.shared.user?.authentication.fetcherAuthorizer()
 //        if let userProfile = UserDefaults.getCustomObjectfor(Key: Keys.userInfo) as? GoogleUserProfile{
 //            query.includeTeamDriveItems = true
 //            query.teamDriveId = userProfile.id
