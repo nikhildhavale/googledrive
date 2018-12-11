@@ -14,7 +14,8 @@ class ListOfFilesTableViewController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         self.setUpUI()
-        
+        gtlDriveService.apiKey = Google.clientId
+
     }
     
     func setUpUI(){
@@ -27,6 +28,14 @@ class ListOfFilesTableViewController: UITableViewController {
        // let query = GTLRQuery
         
       let query =  GTLRDriveQuery_FilesList.query()
+        gtlDriveService.apiKey = Google.driveAPIKey
+        
+//        if let userProfile = UserDefaults.getCustomObjectfor(Key: Keys.userInfo) as? GoogleUserProfile{
+//            query.includeTeamDriveItems = true
+//            query.teamDriveId = userProfile.id
+//
+//        }
+        
         gtlDriveService.executeQuery(query, completionHandler: {(ticket,files,error) in
             if  let fileList = files as? GTLRDrive_FileList {
                 self.fileArray.removeAll()
