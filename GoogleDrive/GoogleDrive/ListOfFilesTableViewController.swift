@@ -10,13 +10,12 @@ import UIKit
 import GoogleAPIClientForREST
 import GoogleSignIn
 class ListOfFilesTableViewController: UITableViewController {
-    let gtlDriveService = GTLRDriveService()
     var fileArray = [GTLRDrive_File]()
     var authoriser:GTMFetcherAuthorizationProtocol?
     override func viewDidLoad() {
         super.viewDidLoad()
         self.setUpUI()
-        gtlDriveService.apiKey = GoogleSenstive.driveAPIKey
+        GoogleSignInShared.shared.gtlDriveService.apiKey = GoogleSenstive.driveAPIKey
         
     }
     
@@ -30,7 +29,7 @@ class ListOfFilesTableViewController: UITableViewController {
        // let query = GTLRQuery
         
       let query =  GTLRDriveQuery_FilesList.query()
-        gtlDriveService.apiKey = GoogleSenstive.driveAPIKey
+        GoogleSignInShared.shared.gtlDriveService.apiKey = GoogleSenstive.driveAPIKey
      //   query.corpora = "user"
 //        query.teamDriveId = GoogleSignInShared.shared.user?.userID
 //        query.includeTeamDriveItems = true
@@ -41,9 +40,9 @@ class ListOfFilesTableViewController: UITableViewController {
 //
 //        }
 //        query.fields = "kind,nextPageToken,files(mimeType,id,kind,name,webViewLink,thumbnailLink,trashed)"
-        authoriser = GIDSignIn.sharedInstance()?.currentUser.authentication.fetcherAuthorizer()
-        gtlDriveService.authorizer = authoriser
-        gtlDriveService.executeQuery(query, completionHandler: {(ticket,files,error) in
+       // authoriser = GIDSignIn.sharedInstance()?.currentUser.authentication.fetcherAuthorizer()
+      //  GoogleSignInShared.shared.gtlDriveService.authorizer = authoriser
+        GoogleSignInShared.shared.gtlDriveService.executeQuery(query, completionHandler: {(ticket,files,error) in
             if  let fileList = files as? GTLRDrive_FileList {
                 self.fileArray.removeAll()
                 self.fileArray = fileList.files ?? [GTLRDrive_File]()

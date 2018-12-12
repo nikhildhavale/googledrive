@@ -23,10 +23,19 @@ class LoginViewController: UIViewController,GIDSignInUIDelegate{
         NotificationCenter.default.addObserver(self, selector: #selector(self.signInDone(notificaton:)), name:  NSNotification.Name( Keys.googleLogin), object: nil)
         GIDSignIn.sharedInstance()?.scopes.append(Google.scope)
         setUpUI()
-        let request = OIDAuthorizationRequest(configuration: GTMAppAuthFetcherAuthorization.configurationForGoogle(), clientId: Google.clientId, clientSecret: nil, scope: Google.scope, redirectURL: URL(string:"http://127.0.0.1:64184/"), responseType: OIDResponseTypeCode, state: nil, codeVerifier: nil, codeChallenge: nil, codeChallengeMethod: nil, additionalParameters: nil)
+        let authorizationEndpoint : NSURL = NSURL(string: "https://accounts.google.com/o/oauth2/v2/auth")!
+        let tokenEndpoint : NSURL = NSURL(string: "https://www.googleapis.com/oauth2/v4/token")!
+        
+        let configuration = OIDServiceConfiguration(authorizationEndpoint: authorizationEndpoint as URL, tokenEndpoint: tokenEndpoint as URL)
+        
+        let request  = OIDAuthorizationRequest.init(configuration: configuration, clientId: Google.clientId, scopes: [OIDScopeOpenID, Google.scope], redirectURL: URL(string: Google.redirectURI)!, responseType: OIDResponseTypeCode, additionalParameters: nil)
           flowSession =   OIDAuthState.authState(byPresenting: request, presenting: self, callback: {(authstate,error) in
-                print(authstate)
-                print(error)
+                if authstate != nil {
+                    GoogleSignInShared.shared.authorizer = GTMAppAuthFetcherAuthorization(authState: authstate!)
+                    
+                    GoogleSignInShared.shared.gtlDriveService.authorizer = GoogleSignInShared.shared.authorizer
+                    self.refreshListOfFiles()
+                }
             })
     
       

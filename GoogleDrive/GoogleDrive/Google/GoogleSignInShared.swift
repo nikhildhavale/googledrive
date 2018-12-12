@@ -9,9 +9,13 @@
 import Foundation
 import GoogleSignIn
 import UIKit
+import GoogleAPIClientForREST
+
 class GoogleSignInShared:NSObject,GIDSignInDelegate {
    static var shared = GoogleSignInShared()
     var user:GIDGoogleUser?
+    let gtlDriveService = GTLRDriveService()
+    var authorizer:GTMFetcherAuthorizationProtocol?
     func setupGoogleSignIn(){
         GIDSignIn.sharedInstance()?.clientID = Google.clientId
         GIDSignIn.sharedInstance()?.delegate = self
