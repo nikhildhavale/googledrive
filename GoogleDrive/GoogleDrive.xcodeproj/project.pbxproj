@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		2C4E2C2E963319941C6DBE3B /* Pods_GoogleDriveUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3FFC625E16B56234E71FF348 /* Pods_GoogleDriveUITests.framework */; };
 		478AB8BA603B6D475691E557 /* Pods_GoogleDriveTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C103F1C6310280FABC9EF31F /* Pods_GoogleDriveTests.framework */; };
+		4B2907E521C1163F00875984 /* close.html in Resources */ = {isa = PBXBuildFile; fileRef = 4B2907E421C1163F00875984 /* close.html */; };
 		4BA5032121BE29D2008E2CC4 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4BA5032021BE29D2008E2CC4 /* AppDelegate.swift */; };
 		4BA5032321BE29D2008E2CC4 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4BA5032221BE29D2008E2CC4 /* LoginViewController.swift */; };
 		4BA5032621BE29D2008E2CC4 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4BA5032421BE29D2008E2CC4 /* Main.storyboard */; };
@@ -50,6 +51,7 @@
 		23E78CEB557A485AA26F9781 /* Pods-GoogleDriveUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-GoogleDriveUITests.release.xcconfig"; path = "Pods/Target Support Files/Pods-GoogleDriveUITests/Pods-GoogleDriveUITests.release.xcconfig"; sourceTree = "<group>"; };
 		294E6FA7893EAD6D137ADA48 /* Pods_GoogleDrive.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_GoogleDrive.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		3FFC625E16B56234E71FF348 /* Pods_GoogleDriveUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_GoogleDriveUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		4B2907E421C1163F00875984 /* close.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = close.html; sourceTree = "<group>"; };
 		4BA5031D21BE29D2008E2CC4 /* GoogleDrive.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = GoogleDrive.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		4BA5032021BE29D2008E2CC4 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		4BA5032221BE29D2008E2CC4 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
@@ -156,6 +158,7 @@
 		4BA5031F21BE29D2008E2CC4 /* GoogleDrive */ = {
 			isa = PBXGroup;
 			children = (
+				4B2907E421C1163F00875984 /* close.html */,
 				4BA5032021BE29D2008E2CC4 /* AppDelegate.swift */,
 				4BA5032221BE29D2008E2CC4 /* LoginViewController.swift */,
 				4BA5032421BE29D2008E2CC4 /* Main.storyboard */,
@@ -323,6 +326,7 @@
 				4BA5036221BE64CB008E2CC4 /* FileItemTableViewCell.xib in Resources */,
 				4BA5032E21BE29D4008E2CC4 /* LaunchScreen.storyboard in Resources */,
 				4BA5032B21BE29D4008E2CC4 /* Assets.xcassets in Resources */,
+				4B2907E521C1163F00875984 /* close.html in Resources */,
 				4BA5032621BE29D2008E2CC4 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
