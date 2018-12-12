@@ -8,6 +8,7 @@
 
 import UIKit
 import GoogleSignIn
+import OAuthSwift
 class LoginViewController: UIViewController,GIDSignInUIDelegate{
 
     @IBOutlet  var signInButton: GIDSignInButton!
@@ -19,7 +20,23 @@ class LoginViewController: UIViewController,GIDSignInUIDelegate{
         NotificationCenter.default.addObserver(self, selector: #selector(self.signInDone(notificaton:)), name:  NSNotification.Name( Keys.googleLogin), object: nil)
         GIDSignIn.sharedInstance()?.scopes.append(Google.scope)
         setUpUI()
-        
+//        let oauthswift = OAuth2Swift(
+//            consumerKey:    Google.clientId,
+//            consumerSecret: "",        // No secret required
+//            authorizeUrl:   "https://accounts.google.com/o/oauth2/auth",
+//            accessTokenUrl: "https://accounts.google.com/o/oauth2/token",
+//            responseType:   "code"
+//        )
+//        oauthswift.allowMissingStateCheck = true
+//        oauthswift.authorizeURLHandler = SafariURLHandler(viewController: self, oauthSwift: oauthswift)
+//        oauthswift.authorize(username: "nikhilwhiztidhavale@gmail.com", password: "NIkhild123", scope: Google.scope, success: {( credential, response, parameters) in }, failure: {(error) in
+//            _ = oauthswift.client.get("https://www.googleapis.com/drive/v2/files", success: { (response) in
+//                print(response.data.converDataToString())
+//            }, failure: {(error) in
+//
+//            })
+//
+//        })
         
         
     }

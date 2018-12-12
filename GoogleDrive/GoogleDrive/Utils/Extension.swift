@@ -21,3 +21,8 @@ extension UserDefaults{
        return NSKeyedUnarchiver.unarchiveObject(with: encodedObject)
     }
 }
+extension Data {
+    func converDataToString() -> String{
+        return String(data: self, encoding: .utf8) ?? ""
+    }
+}
