@@ -21,6 +21,7 @@ class LoginViewController: UIViewController,GIDSignInUIDelegate{
         setUpUI()
         
         
+        
     }
     @objc func signInDone(notificaton:Notification){
         toggleSignInSignOutUI()
