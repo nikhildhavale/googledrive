@@ -4,6 +4,8 @@
 <dict>
 	<key>CFBundleDevelopmentRegion</key>
 	<string>$(DEVELOPMENT_LANGUAGE)</string>
+	<key>CFBundleDisplayName</key>
+	<string>GoogleDriveDownloader</string>
 	<key>CFBundleExecutable</key>
 	<string>$(EXECUTABLE_NAME)</string>
 	<key>CFBundleIdentifier</key>
@@ -23,7 +25,7 @@
 			<string>Editor</string>
 			<key>CFBundleURLSchemes</key>
 			<array>
-				<string>com.googleusercontent.apps.642109055015-4icuhs4tvlikh1j0t81nqkfv8upt1ruo</string>
+				<string>com.googleusercontent.apps.1095264136507-g9mec4bd2bgq1ut8oofi2dhvdloice9i</string>
 			</array>
 		</dict>
 	</array>
