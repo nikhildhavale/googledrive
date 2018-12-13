@@ -26,6 +26,9 @@
 		4B5B088821C2659900DE1976 /* FileItemTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4B5B088621C2659900DE1976 /* FileItemTableViewCell.xib */; };
 		4B5B088A21C265A200DE1976 /* GoogleSignInShared.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B5B088921C265A200DE1976 /* GoogleSignInShared.swift */; };
 		4B5B088C21C268F000DE1976 /* Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B5B088B21C268EF00DE1976 /* Extension.swift */; };
+		4B5B088F21C27BDB00DE1976 /* SecureImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B5B088E21C27BDB00DE1976 /* SecureImageView.swift */; };
+		4B5B089121C27BE700DE1976 /* IconDownloader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B5B089021C27BE700DE1976 /* IconDownloader.swift */; };
+		4B5B089321C27C1500DE1976 /* ImageCache.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B5B089221C27C1500DE1976 /* ImageCache.swift */; };
 		D2B56CD3496938D29E8B3763 /* Pods_GoogleDriveDownloader.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9FFF98B0471E5236E7AA55B5 /* Pods_GoogleDriveDownloader.framework */; };
 		F5D600E7CE5C5C30DB9F4044 /* Pods_GoogleDriveDownloaderUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1EBD768CCC86BB129A7CC02D /* Pods_GoogleDriveDownloaderUITests.framework */; };
 /* End PBXBuildFile section */
@@ -75,6 +78,9 @@
 		4B5B088621C2659900DE1976 /* FileItemTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = FileItemTableViewCell.xib; sourceTree = "<group>"; };
 		4B5B088921C265A200DE1976 /* GoogleSignInShared.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GoogleSignInShared.swift; sourceTree = "<group>"; };
 		4B5B088B21C268EF00DE1976 /* Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Extension.swift; sourceTree = "<group>"; };
+		4B5B088E21C27BDB00DE1976 /* SecureImageView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SecureImageView.swift; sourceTree = "<group>"; };
+		4B5B089021C27BE700DE1976 /* IconDownloader.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IconDownloader.swift; sourceTree = "<group>"; };
+		4B5B089221C27C1500DE1976 /* ImageCache.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ImageCache.swift; sourceTree = "<group>"; };
 		75C00AEB0CA1B63174BAB4C5 /* Pods-GoogleDriveDownloader.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-GoogleDriveDownloader.debug.xcconfig"; path = "Pods/Target Support Files/Pods-GoogleDriveDownloader/Pods-GoogleDriveDownloader.debug.xcconfig"; sourceTree = "<group>"; };
 		9FFF98B0471E5236E7AA55B5 /* Pods_GoogleDriveDownloader.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_GoogleDriveDownloader.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		C80C28B65801C68D89871093 /* Pods-GoogleDriveDownloaderUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-GoogleDriveDownloaderUITests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-GoogleDriveDownloaderUITests/Pods-GoogleDriveDownloaderUITests.debug.xcconfig"; sourceTree = "<group>"; };
@@ -146,9 +152,8 @@
 				12F93AE41FFE108F00029CD6 /* DownloadedFileViewController.swift */,
 				12F93AB21FFDE1F200029CD6 /* Main.storyboard */,
 				4B5B087F21C2641C00DE1976 /* LoginViewController.swift */,
-				4B5B088B21C268EF00DE1976 /* Extension.swift */,
+				4B5B088D21C27BA900DE1976 /* Utils */,
 				4B5B088121C2652800DE1976 /* ListOfFilesTableViewController.swift */,
-				4B5B088321C2657E00DE1976 /* Constant.swift */,
 				12F93AB51FFDE1F200029CD6 /* Assets.xcassets */,
 				12F93AB71FFDE1F200029CD6 /* LaunchScreen.storyboard */,
 				12F93ABA1FFDE1F200029CD6 /* Info.plist */,
@@ -186,6 +191,18 @@
 				180FA645B6DFD59A5B95A04F /* Pods-GoogleDriveDownloaderUITests.release.xcconfig */,
 			);
 			name = Pods;
+			sourceTree = "<group>";
+		};
+		4B5B088D21C27BA900DE1976 /* Utils */ = {
+			isa = PBXGroup;
+			children = (
+				4B5B089221C27C1500DE1976 /* ImageCache.swift */,
+				4B5B089021C27BE700DE1976 /* IconDownloader.swift */,
+				4B5B088E21C27BDB00DE1976 /* SecureImageView.swift */,
+				4B5B088B21C268EF00DE1976 /* Extension.swift */,
+				4B5B088321C2657E00DE1976 /* Constant.swift */,
+			);
+			path = Utils;
 			sourceTree = "<group>";
 		};
 		53A7A9F7D5C35A015565F167 /* Frameworks */ = {
@@ -486,11 +503,14 @@
 				4B5B088721C2659900DE1976 /* FileItemTableViewCell.swift in Sources */,
 				12F93AAF1FFDE1F200029CD6 /* AppDelegate.swift in Sources */,
 				4B5B088C21C268F000DE1976 /* Extension.swift in Sources */,
+				4B5B088F21C27BDB00DE1976 /* SecureImageView.swift in Sources */,
 				4B5B088421C2657E00DE1976 /* Constant.swift in Sources */,
 				12F93AE51FFE109000029CD6 /* DownloadedFileViewController.swift in Sources */,
+				4B5B089121C27BE700DE1976 /* IconDownloader.swift in Sources */,
 				4B5B088221C2652800DE1976 /* ListOfFilesTableViewController.swift in Sources */,
 				12F93AE31FFE0EB900029CD6 /* CloudFileTableCell.swift in Sources */,
 				12F93ADD1FFDE22800029CD6 /* CloudFileBrowserViewController.swift in Sources */,
+				4B5B089321C27C1500DE1976 /* ImageCache.swift in Sources */,
 				4B5B088A21C265A200DE1976 /* GoogleSignInShared.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

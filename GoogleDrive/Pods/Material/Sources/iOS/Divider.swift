@@ -149,7 +149,7 @@ extension UIView {
             AssociatedObject.set(base: self, key: &DividerKey, value: value)
         }
     }
-    
+
     /// A preset wrapper around divider.contentEdgeInsets.
     open var dividerContentEdgeInsetsPreset: EdgeInsetsPreset {
         get {
@@ -159,7 +159,7 @@ extension UIView {
             divider.contentEdgeInsetsPreset = value
         }
     }
-    
+
     /// A reference to divider.contentEdgeInsets.
     open var dividerContentEdgeInsets: EdgeInsets {
         get {
@@ -169,7 +169,7 @@ extension UIView {
             divider.contentEdgeInsets = value
         }
     }
-    
+
     /// Divider color.
     @IBInspectable
     open var dividerColor: UIColor? {
@@ -180,7 +180,7 @@ extension UIView {
             divider.color = value
         }
     }
-    
+
     /// Divider visibility.
     @IBInspectable
     open var isDividerHidden: Bool {
@@ -191,7 +191,7 @@ extension UIView {
             divider.isHidden = value
         }
     }
-    
+
     /// Divider animation.
     open var dividerAlignment: DividerAlignment {
         get {
@@ -201,7 +201,7 @@ extension UIView {
             divider.alignment = value
         }
     }
-    
+
     /// Divider thickness.
     @IBInspectable
     open var dividerThickness: CGFloat {
@@ -212,7 +212,7 @@ extension UIView {
             divider.thickness = value
         }
     }
-    
+
     /// Sets the divider frame.
     open func layoutDivider() {
         divider.reload()

@@ -61,9 +61,17 @@ class ListOfFilesTableViewController: UITableViewController,GIDSignInDelegate, G
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: Identifiers.fileItemIdentifier, for: indexPath) as! FileItemTableViewCell
-        
-        cell.fileNameLabel.text = self.fileArray[indexPath.row].name
-        
+        let file = self.fileArray[indexPath.row]
+        cell.fileNameLabel.text = file.name
+        if "application/vnd.google-apps.folder" == file.mimeType  {
+            
+            cell.fileIconImageView.image = UIImage(named: "folder")
+
+        }
+        else {
+            cell.fileIconImageView.image = UIImage(named: "fileimage");
+
+        }
         return cell
     }
     func sign(_ signIn: GIDSignIn!, didSignInFor user: GIDGoogleUser!,
@@ -71,7 +79,6 @@ class ListOfFilesTableViewController: UITableViewController,GIDSignInDelegate, G
         if let error = error {
             GoogleSignInShared.shared.gtlDriveService.authorizer = nil
             
-            navigationItem.rightBarButtonItem = nil
             
         } else {
             print("__ Authentication Success")

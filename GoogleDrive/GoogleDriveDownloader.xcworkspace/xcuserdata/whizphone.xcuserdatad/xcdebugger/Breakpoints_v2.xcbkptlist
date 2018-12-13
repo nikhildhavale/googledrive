@@ -9,46 +9,30 @@
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "GoogleDriveDownloader/CloudFileBrowserViewController.swift"
-            timestampString = "566392953.6729701"
+            filePath = "GoogleDriveDownloader/ListOfFilesTableViewController.swift"
+            timestampString = "566395553.866147"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "96"
-            endingLineNumber = "96"
-            landmarkName = "fetchDataFromDrive()"
+            startingLineNumber = "45"
+            endingLineNumber = "45"
+            landmarkName = "gtlQuery()"
             landmarkType = "7">
-            <Locations>
-               <Location
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "GoogleDriveDownloader.CloudFileBrowserViewController.fetchDataFromDrive() -&gt; ()"
-                  moduleName = "GoogleDriveDownloader"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/whizphone/Documents/googledrive/GoogleDrive/GoogleDriveDownloader/CloudFileBrowserViewController.swift"
-                  timestampString = "566393228.981178"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "96"
-                  endingLineNumber = "96"
-                  offsetFromSymbolStart = "1613">
-               </Location>
-               <Location
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "closure #1 (__C.GTLRServiceTicket, Swift.Optional&lt;Any&gt;, Swift.Optional&lt;Swift.Error&gt;) -&gt; () in GoogleDriveDownloader.CloudFileBrowserViewController.fetchDataFromDrive() -&gt; ()"
-                  moduleName = "GoogleDriveDownloader"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/whizphone/Documents/googledrive/GoogleDrive/GoogleDriveDownloader/CloudFileBrowserViewController.swift"
-                  timestampString = "566393228.984942"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "97"
-                  endingLineNumber = "97"
-                  offsetFromSymbolStart = "110">
-               </Location>
-            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "GoogleDriveDownloader/ListOfFilesTableViewController.swift"
+            timestampString = "566395575.300141"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "66"
+            endingLineNumber = "66"
+            landmarkName = "tableView(_:cellForRowAt:)"
+            landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
    </Breakpoints>
