@@ -10,15 +10,19 @@ import Foundation
 import GoogleSignIn
 import UIKit
 import GoogleAPIClientForREST
-
+import Firebase
+import GGLCore
 class GoogleSignInShared:NSObject,GIDSignInDelegate {
    static var shared = GoogleSignInShared()
     var user:GIDGoogleUser?
     let gtlDriveService = GTLRDriveService()
     var authorizer:GTMFetcherAuthorizationProtocol?
     func setupGoogleSignIn(){
+        var error:NSError?
+        GGLContext.sharedInstance()?.configureWithError(&error)
+        FIRApp.configure()
         GIDSignIn.sharedInstance()?.clientID = Google.clientId
-        GIDSignIn.sharedInstance()?.delegate = self
+        
     }
     func sign(_ signIn: GIDSignIn!, didSignInFor user: GIDGoogleUser!, withError error: Error!) {
         if let error = error {

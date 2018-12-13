@@ -11,7 +11,7 @@ import GoogleSignIn
 import OAuthSwift
 import AppAuth
 import GTMAppAuth
-class LoginViewController: UIViewController,GIDSignInUIDelegate{
+class LoginViewController: UIViewController,GIDSignInUIDelegate,GIDSignInDelegate{
 
     @IBOutlet  var signInButton: GIDSignInButton!
     var signOut = UIButton(type: UIButton.ButtonType.system)
@@ -20,23 +20,10 @@ class LoginViewController: UIViewController,GIDSignInUIDelegate{
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
         GIDSignIn.sharedInstance()?.uiDelegate = self
+        GIDSignIn.sharedInstance()?.delegate = self
         NotificationCenter.default.addObserver(self, selector: #selector(self.signInDone(notificaton:)), name:  NSNotification.Name( Keys.googleLogin), object: nil)
-        GIDSignIn.sharedInstance()?.scopes.append(Google.scope)
+        GIDSignIn.sharedInstance()?.scopes = Google.scopes
         setUpUI()
-        let authorizationEndpoint : NSURL = NSURL(string: "https://accounts.google.com/o/oauth2/v2/auth")!
-        let tokenEndpoint : NSURL = NSURL(string: "https://www.googleapis.com/oauth2/v4/token")!
-        
-        let configuration = OIDServiceConfiguration(authorizationEndpoint: authorizationEndpoint as URL, tokenEndpoint: tokenEndpoint as URL)
-        
-        let request  = OIDAuthorizationRequest.init(configuration: configuration, clientId: Google.clientId, scopes: [OIDScopeOpenID, Google.scope], redirectURL: URL(string: Google.redirectURI)!, responseType: OIDResponseTypeCode, additionalParameters: nil)
-          flowSession =   OIDAuthState.authState(byPresenting: request, presenting: self, callback: {(authstate,error) in
-                if authstate != nil {
-                    GoogleSignInShared.shared.authorizer = GTMAppAuthFetcherAuthorization(authState: authstate!)
-                    
-                    GoogleSignInShared.shared.gtlDriveService.authorizer = GoogleSignInShared.shared.authorizer
-                    self.refreshListOfFiles()
-                }
-            })
     
       
         
@@ -63,6 +50,7 @@ class LoginViewController: UIViewController,GIDSignInUIDelegate{
         toggleSignInSignOutUI()
         
     }
+    
     func toggleSignInSignOutUI(){
         if UserDefaults.getCustomObjectfor(Key: Keys.userInfo) == nil {
             self.navigationItem.rightBarButtonItem = UIBarButtonItem(customView: signInButton)
@@ -80,6 +68,15 @@ class LoginViewController: UIViewController,GIDSignInUIDelegate{
         toggleSignInSignOutUI()
 
     }
+    @objc func loginButtonClicked(){
+        if GIDSignIn.sharedInstance()!.hasAuthInKeychain(){
+            GIDSignIn.sharedInstance()?.signInSilently()
+        }
+        else{
+            GIDSignIn.sharedInstance()?.signIn()
+        }
+        
+    }
     func sign(inWillDispatch signIn: GIDSignIn!, error: Error!) {
         
     }
@@ -89,6 +86,20 @@ class LoginViewController: UIViewController,GIDSignInUIDelegate{
     func sign(_ signIn: GIDSignIn!, present viewController: UIViewController!) {
         self.present(viewController, animated: true, completion: nil)
 
+    }
+    func sign(_ signIn: GIDSignIn!, didSignInFor user: GIDGoogleUser!, withError error: Error!) {
+        if(error != nil) {
+            print(error)
+        }
+        else{
+            GoogleSignInShared.shared.gtlDriveService.authorizer = user.authentication.fetcherAuthorizer()
+            refreshListOfFiles()
+        }
+
+
+    }
+    func sign(_ signIn: GIDSignIn!, didDisconnectWith user: GIDGoogleUser!, withError error: Error!) {
+        
     }
 }
 

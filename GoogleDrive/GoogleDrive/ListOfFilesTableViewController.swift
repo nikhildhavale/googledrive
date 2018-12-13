@@ -27,22 +27,10 @@ class ListOfFilesTableViewController: UITableViewController {
     func gtlQuery(){
        // GTLRDriveQuery_FilesGet
        // let query = GTLRQuery
-        
+      fileArray.removeAll()
       let query =  GTLRDriveQuery_FilesList.query()
-        GoogleSignInShared.shared.gtlDriveService.apiKey = GoogleSenstive.driveAPIKey
-     //   query.corpora = "user"
-//        query.teamDriveId = GoogleSignInShared.shared.user?.userID
-//        query.includeTeamDriveItems = true
- //       gtlDriveService.authorizer = GoogleSignInShared.shared.user?.authentication.fetcherAuthorizer()
-//        if let userProfile = UserDefaults.getCustomObjectfor(Key: Keys.userInfo) as? GoogleUserProfile{
-//            query.includeTeamDriveItems = true
-//            query.teamDriveId = userProfile.id
-//
-//        }
-//        query.fields = "kind,nextPageToken,files(mimeType,id,kind,name,webViewLink,thumbnailLink,trashed)"
-       // authoriser = GIDSignIn.sharedInstance()?.currentUser.authentication.fetcherAuthorizer()
-      //  GoogleSignInShared.shared.gtlDriveService.authorizer = authoriser
-        GoogleSignInShared.shared.gtlDriveService.executeQuery(query, completionHandler: {(ticket,files,error) in
+       query.pageSize = 100
+GoogleSignInShared.shared.gtlDriveService.executeQuery(query, completionHandler: {(ticket,files,error) in
             if  let fileList = files as? GTLRDrive_FileList {
                 self.fileArray.removeAll()
                 self.fileArray = fileList.files ?? [GTLRDrive_File]()
