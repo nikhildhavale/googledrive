@@ -11,7 +11,7 @@ import GoogleSignIn
 import UIKit
 import GoogleAPIClientForREST
 import GGLCore
-class GoogleSignInShared:NSObject,GIDSignInDelegate {
+class GoogleSignInShared:NSObject {
    static var shared = GoogleSignInShared()
     let gtlDriveService = GTLRDriveService()
     var authorizer:GTMFetcherAuthorizationProtocol?
@@ -19,13 +19,6 @@ class GoogleSignInShared:NSObject,GIDSignInDelegate {
         var error:NSError?
         GGLContext.sharedInstance()?.configureWithError(&error)
         
-    }
-    func sign(_ signIn: GIDSignIn!, didSignInFor user: GIDGoogleUser!, withError error: Error!) {
-        if let error = error {
-            print("\(error.localizedDescription)")
-        } else {
-            NotificationCenter.default.post(name: NSNotification.Name( Keys.googleLogin), object: nil)
-        }
     }
     private override init() {
         
