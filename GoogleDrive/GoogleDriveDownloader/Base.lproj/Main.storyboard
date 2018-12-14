@@ -21,7 +21,7 @@
                             <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="kYX-H3-B2n">
                                 <rect key="frame" x="0.0" y="64" width="375" height="603"/>
                                 <connections>
-                                    <segue destination="ZQM-ri-9dD" kind="embed" id="H6E-oP-TBR"/>
+                                    <segue destination="ZQM-ri-9dD" kind="embed" identifier="" id="H6E-oP-TBR"/>
                                 </connections>
                             </containerView>
                         </subviews>
@@ -35,10 +35,64 @@
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
                     <navigationItem key="navigationItem" id="6P9-Y6-4Gf"/>
+                    <connections>
+                        <segue destination="oSj-s0-qVG" kind="show" identifier="showDetail" id="DMd-Yh-L9N"/>
+                        <segue destination="ZQM-ri-9dD" kind="show" identifier="showFolderContent" id="5rN-Rs-oeT"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="992.79999999999995" y="26.53673163418291"/>
+        </scene>
+        <!--File Detail View Controller-->
+        <scene sceneID="L6S-r6-yeM">
+            <objects>
+                <viewController id="oSj-s0-qVG" customClass="FileDetailViewController" customModule="GoogleDriveDownloader" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="Ytj-VH-Oyg">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="ZQH-5F-U7s">
+                                <rect key="frame" x="137.5" y="238.5" width="100" height="190"/>
+                                <subviews>
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="fileimage" translatesAutoresizingMaskIntoConstraints="NO" id="kCw-YU-Sh5">
+                                        <rect key="frame" x="0.0" y="0.0" width="100" height="100"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="100" id="SZT-Hq-tOL"/>
+                                            <constraint firstAttribute="width" secondItem="kCw-YU-Sh5" secondAttribute="height" multiplier="1:1" id="vic-FK-eED"/>
+                                        </constraints>
+                                    </imageView>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zWG-If-snU">
+                                        <rect key="frame" x="29" y="120" width="42" height="20"/>
+                                        <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="17"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hkp-wf-P1A">
+                                        <rect key="frame" x="15.5" y="160" width="69" height="30"/>
+                                        <state key="normal" title="Download"/>
+                                        <connections>
+                                            <action selector="viewOrDownloadButtonClicked:" destination="oSj-s0-qVG" eventType="touchUpInside" id="JpD-B1-cSK"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                            </stackView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="ZQH-5F-U7s" firstAttribute="centerX" secondItem="Ytj-VH-Oyg" secondAttribute="centerX" id="5Cz-e2-DxL"/>
+                            <constraint firstItem="ZQH-5F-U7s" firstAttribute="centerY" secondItem="Ytj-VH-Oyg" secondAttribute="centerY" id="p9h-4O-gjT"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="g46-QE-J39"/>
+                    </view>
+                    <connections>
+                        <outlet property="buttonToDownloadOrView" destination="hkp-wf-P1A" id="Pty-UN-8CG"/>
+                        <outlet property="fileName" destination="zWG-If-snU" id="E0e-s5-hWa"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="3FY-oA-wgX" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1085" y="897"/>
         </scene>
         <!--List Of Files Table View Controller-->
         <scene sceneID="oef-ts-zfD">
@@ -48,6 +102,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="603"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <inset key="separatorInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                         <connections>
                             <outlet property="dataSource" destination="ZQM-ri-9dD" id="L1S-jD-cer"/>
                             <outlet property="delegate" destination="ZQM-ri-9dD" id="BaD-e4-P8G"/>
@@ -77,4 +132,10 @@
             <point key="canvasLocation" x="53.600000000000001" y="-671.51424287856082"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="fileimage" width="150" height="150"/>
+    </resources>
+    <inferredMetricsTieBreakers>
+        <segue reference="H6E-oP-TBR"/>
+    </inferredMetricsTieBreakers>
 </document>

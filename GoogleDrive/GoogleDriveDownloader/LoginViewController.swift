@@ -8,6 +8,7 @@
 
 import UIKit
 import GoogleSignIn
+import GoogleAPIClientForREST
 
 class LoginViewController: UIViewController {
     var signInButton = UIButton(type: UIButton.ButtonType.system)
@@ -69,14 +70,22 @@ class LoginViewController: UIViewController {
         }
         
     }
-    /*
+    
     // MARK: - Navigation
 
     // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
+        if let file = sender as? GTLRDrive_File {
+            if let destination = segue.destination as? ListOfFilesTableViewController {
+                destination.currentFolderId = file.identifier ?? "" 
+            }
+            else if let destination = segue.destination as? FileDetailViewController {
+                destination.file = file
+            }
+            
+            
+        }
     }
-    */
+ 
 
 }

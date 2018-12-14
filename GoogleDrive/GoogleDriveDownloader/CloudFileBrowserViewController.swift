@@ -163,13 +163,13 @@ extension CloudFileBrowserViewController: UITableViewDelegate, UITableViewDataSo
             let item = folderItems[indexPath.row]
             let cell = UITableViewCell.init(style: .default, reuseIdentifier: nil)
             cell.textLabel?.text = item.name
-            cell.imageView?.image = #imageLiteral(resourceName: "folder")
+           // cell.imageView?.image = #imageLiteral(resourceName: "folder")
             return cell
         } else {
             let item = fileItems[indexPath.row]
             let cell = CloudFileTableCell.init(cloudItem: item, style: .default, reuseIdentifier: nil)
             cell.textLabel?.text = item.name
-            cell.imageView?.image = #imageLiteral(resourceName: "file")
+            //cell.imageView?.image = #imageLiteral(resourceName: "file")
             return cell
         }
     }

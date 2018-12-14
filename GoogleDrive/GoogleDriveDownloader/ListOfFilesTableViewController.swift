@@ -3,7 +3,7 @@
 //  GoogleDriveDownloader
 //
 //  Created by Nikhil Modi on 12/13/18.
-//  Copyright © 2018 Bá Anh Nguyễn. All rights reserved.
+//  Copyright © 2018 Nikhil Dhavale. All rights reserved.
 //
 
 import UIKit
@@ -14,7 +14,13 @@ class ListOfFilesTableViewController: UITableViewController,GIDSignInDelegate, G
     var fileArray = [GTLRDrive_File]()
     var authoriser:GTMFetcherAuthorizationProtocol?
     var currentFolderId: String = "" // root
-
+    {
+        didSet{
+            if currentFolderId.count > 0 {
+                gtlQuery()
+            }
+        }
+    }
     override func viewDidLoad() {
         super.viewDidLoad()
         self.setUpUI()
@@ -51,7 +57,15 @@ class ListOfFilesTableViewController: UITableViewController,GIDSignInDelegate, G
     }
     // MARK: - Table view data source
     
-    
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        if AlertMessage.folderMimeType != self.fileArray[indexPath.row].mimeType {
+            self.parent?.performSegue(withIdentifier: Identifiers.showDetails, sender: self.fileArray[indexPath.row])
+
+        }
+        else{
+            self.parent?.performSegue(withIdentifier: Identifiers.showFolderContent, sender: self.fileArray[indexPath.row])
+        }
+    }
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
@@ -63,9 +77,10 @@ class ListOfFilesTableViewController: UITableViewController,GIDSignInDelegate, G
         let cell = tableView.dequeueReusableCell(withIdentifier: Identifiers.fileItemIdentifier, for: indexPath) as! FileItemTableViewCell
         let file = self.fileArray[indexPath.row]
         cell.fileNameLabel.text = file.name
-        if "application/vnd.google-apps.folder" == file.mimeType  {
+        if AlertMessage.folderMimeType == file.mimeType  {
             
             cell.fileIconImageView.image = UIImage(named: "folder")
+            
 
         }
         else {
@@ -78,10 +93,9 @@ class ListOfFilesTableViewController: UITableViewController,GIDSignInDelegate, G
               withError error: Error!) {
         if let error = error {
             GoogleSignInShared.shared.gtlDriveService.authorizer = nil
-            
+            print(error)
             
         } else {
-            print("__ Authentication Success")
             GoogleSignInShared.shared.gtlDriveService.authorizer = user.authentication.fetcherAuthorizer()
             self.gtlQuery()
             

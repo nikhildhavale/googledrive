@@ -18,4 +18,10 @@ struct Keys {
 }
 struct Identifiers {
     static let fileItemIdentifier = "fileItemIdentifier"
+    static let showDetails = "showDetail"
+    static let showFolderContent = "showFolderContent"
+}
+struct AlertMessage {
+    static let selectedItemFolder = "Selected Item is a folder"
+    static let folderMimeType = "application/vnd.google-apps.folder"
 }
