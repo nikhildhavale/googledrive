@@ -13,6 +13,8 @@ class ListOfFilesTableViewController: UITableViewController,GIDSignInDelegate, G
    // var service = GTLRDriveService()
     var fileArray = [GTLRDrive_File]()
     var authoriser:GTMFetcherAuthorizationProtocol?
+    var pageToken:String? = ""
+    var shouldPaginate = false
     var currentFolderId: String = "" // root
     {
         didSet{
@@ -29,6 +31,7 @@ class ListOfFilesTableViewController: UITableViewController,GIDSignInDelegate, G
     
     func setUpUI(){
         self.tableView.register(UINib(nibName: "FileItemTableViewCell", bundle: nil), forCellReuseIdentifier: Identifiers.fileItemIdentifier)
+        self.tableView.register(UINib(nibName: "LoadingTableViewCell", bundle: nil), forCellReuseIdentifier: Identifiers.loadingIdentifier)
         self.tableView.tableFooterView = UIView()
         GIDSignIn.sharedInstance().delegate = self
         GIDSignIn.sharedInstance().uiDelegate = self
@@ -39,17 +42,28 @@ class ListOfFilesTableViewController: UITableViewController,GIDSignInDelegate, G
         // let query = GTLRQuery
         fileArray.removeAll()
         let query =  GTLRDriveQuery_FilesList.query()
-        query.pageSize = 100
+        query.pageSize = 50
         if currentFolderId == "" { // Root
             query.q = "trashed=false"
         } else {
             query.q = "'\(currentFolderId)' in parents and trashed=false"
         }
-        query.fields = "files(id, mimeType, name, parents, createdTime, size)"
+        query.fields = "nextPageToken,files(id, mimeType, name, parents, createdTime, size)"
+        query.pageToken = pageToken
+    
         GoogleSignInShared.shared.gtlDriveService.executeQuery(query, completionHandler: {(ticket,files,error) in
+            self.shouldPaginate = ticket.shouldFetchNextPages
             if  let fileList = files as? GTLRDrive_FileList {
-                self.fileArray.removeAll()
-                self.fileArray = fileList.files ?? [GTLRDrive_File]()
+            
+                if (self.pageToken?.count == 0){
+                    self.fileArray = fileList.files ?? [GTLRDrive_File]()
+
+                }
+                else {
+                    self.fileArray.append(contentsOf:fileList.files ?? [GTLRDrive_File]() )
+                }
+                self.pageToken = fileList.nextPageToken
+                
                 self.tableView.reloadData()
             }
             
@@ -73,26 +87,43 @@ class ListOfFilesTableViewController: UITableViewController,GIDSignInDelegate, G
     }
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        // #warning Incomplete implementation, return the number of rows
-        return self.fileArray.count
+        if  pageToken != nil {
+            return self.fileArray.count + 1 
+
+        }
+        else {
+            return self.fileArray.count
+        }
     }
     
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: Identifiers.fileItemIdentifier, for: indexPath) as! FileItemTableViewCell
-        let file = self.fileArray[indexPath.row]
-        cell.fileNameLabel.text = file.name
-        if AlertMessage.folderMimeType == file.mimeType  {
-            
-            cell.fileIconImageView.image = UIImage(named: "folder")
-            
-
+        if indexPath.row < self.fileArray.count {
+            let cell = tableView.dequeueReusableCell(withIdentifier: Identifiers.fileItemIdentifier, for: indexPath) as! FileItemTableViewCell
+            let file = self.fileArray[indexPath.row]
+            cell.fileNameLabel.text = file.name
+            if AlertMessage.folderMimeType == file.mimeType  {
+                
+                cell.fileIconImageView.image = UIImage(named: "folder")
+                
+                
+            }
+            else {
+                cell.fileIconImageView.image = UIImage(named: "fileimage");
+                
+            }
+            return cell
         }
         else {
-            cell.fileIconImageView.image = UIImage(named: "fileimage");
-
+            let cell = tableView.dequeueReusableCell(withIdentifier: Identifiers.loadingIdentifier, for: indexPath) as! LoadingTableViewCell
+            cell.loadingView.startAnimating()
+            return cell
         }
-        return cell
+    }
+    override func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
+        if cell is LoadingTableViewCell  && self.fileArray.count != 0 {
+            gtlQuery()
+        }
     }
     func sign(_ signIn: GIDSignIn!, didSignInFor user: GIDGoogleUser!,
               withError error: Error!) {

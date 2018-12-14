@@ -17,6 +17,7 @@ struct Keys {
 }
 struct Identifiers {
     static let fileItemIdentifier = "fileItemIdentifier"
+    static let loadingIdentifier = "loadingIdentifier"
     static let showDetails = "showDetail"
     static let showActualFile = "showActualFile"
 

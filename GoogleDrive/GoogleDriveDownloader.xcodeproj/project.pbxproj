@@ -25,6 +25,8 @@
 		4B8C431021C362F30068D1A5 /* FileDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B8C430F21C362F30068D1A5 /* FileDetailViewController.swift */; };
 		4B8C431221C372F80068D1A5 /* README.md in Resources */ = {isa = PBXBuildFile; fileRef = 4B8C431121C372F70068D1A5 /* README.md */; };
 		4B8C431421C37FB40068D1A5 /* WebViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B8C431321C37FB40068D1A5 /* WebViewController.swift */; };
+		4B8C431721C38F7C0068D1A5 /* LoadingTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B8C431521C38F7C0068D1A5 /* LoadingTableViewCell.swift */; };
+		4B8C431821C38F7C0068D1A5 /* LoadingTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4B8C431621C38F7C0068D1A5 /* LoadingTableViewCell.xib */; };
 		D2B56CD3496938D29E8B3763 /* Pods_GoogleDriveDownloader.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9FFF98B0471E5236E7AA55B5 /* Pods_GoogleDriveDownloader.framework */; };
 		F5D600E7CE5C5C30DB9F4044 /* Pods_GoogleDriveDownloaderUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1EBD768CCC86BB129A7CC02D /* Pods_GoogleDriveDownloaderUITests.framework */; };
 /* End PBXBuildFile section */
@@ -73,6 +75,8 @@
 		4B8C430F21C362F30068D1A5 /* FileDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FileDetailViewController.swift; sourceTree = "<group>"; };
 		4B8C431121C372F70068D1A5 /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = SOURCE_ROOT; };
 		4B8C431321C37FB40068D1A5 /* WebViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebViewController.swift; sourceTree = "<group>"; };
+		4B8C431521C38F7C0068D1A5 /* LoadingTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadingTableViewCell.swift; sourceTree = "<group>"; };
+		4B8C431621C38F7C0068D1A5 /* LoadingTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = LoadingTableViewCell.xib; sourceTree = "<group>"; };
 		75C00AEB0CA1B63174BAB4C5 /* Pods-GoogleDriveDownloader.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-GoogleDriveDownloader.debug.xcconfig"; path = "Pods/Target Support Files/Pods-GoogleDriveDownloader/Pods-GoogleDriveDownloader.debug.xcconfig"; sourceTree = "<group>"; };
 		9FFF98B0471E5236E7AA55B5 /* Pods_GoogleDriveDownloader.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_GoogleDriveDownloader.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		C80C28B65801C68D89871093 /* Pods-GoogleDriveDownloaderUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-GoogleDriveDownloaderUITests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-GoogleDriveDownloaderUITests/Pods-GoogleDriveDownloaderUITests.debug.xcconfig"; sourceTree = "<group>"; };
@@ -149,6 +153,8 @@
 				12F93AB71FFDE1F200029CD6 /* LaunchScreen.storyboard */,
 				12F93ABA1FFDE1F200029CD6 /* Info.plist */,
 				12F93ADE1FFDE4B400029CD6 /* GoogleService-Info.plist */,
+				4B8C431521C38F7C0068D1A5 /* LoadingTableViewCell.swift */,
+				4B8C431621C38F7C0068D1A5 /* LoadingTableViewCell.xib */,
 			);
 			path = GoogleDriveDownloader;
 			sourceTree = "<group>";
@@ -325,6 +331,7 @@
 				12F93ADF1FFDE4B400029CD6 /* GoogleService-Info.plist in Resources */,
 				12F93AB61FFDE1F200029CD6 /* Assets.xcassets in Resources */,
 				12F93AB41FFDE1F200029CD6 /* Main.storyboard in Resources */,
+				4B8C431821C38F7C0068D1A5 /* LoadingTableViewCell.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -487,6 +494,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4B8C431721C38F7C0068D1A5 /* LoadingTableViewCell.swift in Sources */,
 				4B8C431021C362F30068D1A5 /* FileDetailViewController.swift in Sources */,
 				4B5B088021C2641C00DE1976 /* LoginViewController.swift in Sources */,
 				4B5B088721C2659900DE1976 /* FileItemTableViewCell.swift in Sources */,

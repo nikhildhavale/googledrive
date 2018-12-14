@@ -18,7 +18,7 @@ class GoogleSignInShared:NSObject {
     func setupGoogleSignIn(){
         var error:NSError?
         GGLContext.sharedInstance()?.configureWithError(&error)
-        
+        gtlDriveService.shouldFetchNextPages = true 
     }
     private override init() {
         

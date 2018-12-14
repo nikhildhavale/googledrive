@@ -58,6 +58,7 @@ class FileDetailViewController: UIViewController {
         if !fileExists {
             downloadFile()
             buttonToDownloadOrView.isEnabled = false
+            
         }
         else {
             if let url = destinationURL {
@@ -65,31 +66,29 @@ class FileDetailViewController: UIViewController {
             }
         }
     }
-    func finish(ticket:GTLRServiceTicket,gtlrData:Any,error:NSError){
-        if let gtlrDataObject = gtlrData as? GTLRDataObject {
-            if let url = self.destinationURL {
-                do {
-                    try  gtlrDataObject.data.write(to: url)
-                    self.fileExists = true
-                    self.changeButtonTitle()
-                }
-                catch{
-                    print(error)
-                }
-                self.buttonToDownloadOrView.isEnabled = true
-            }
-        }
-    }
+
     func downloadFile(){
         if let driveFile = file {
             guard  let fileIdentifier =  driveFile.identifier else {
                 return
             }
             let query = GTLRDriveQuery_FilesGet.queryForMedia(withFileId: fileIdentifier)
-            GoogleSignInShared.shared.gtlDriveService.executeQuery(query, delegate: self, didFinish: #selector(finish(ticket:gtlrData:error:)))
-           // GoogleSignInShared.shared.gtlDriveService.executeQuery(query, completionHandler: {(ticket,gtlrData,error) in
-
-           // })
+            
+            GoogleSignInShared.shared.gtlDriveService.executeQuery(query, completionHandler: {(ticket,gtlrData,error) in
+                if let gtlrDataObject = gtlrData as? GTLRDataObject {
+                    if let url = self.destinationURL {
+                        do {
+                          try  gtlrDataObject.data.write(to: url)
+                            self.fileExists = true
+                            self.changeButtonTitle()
+                        }
+                        catch{
+                            self.showAlertOK(title: "Error", message: "Could not download file.")
+                        }
+                        self.buttonToDownloadOrView.isEnabled = true
+                    }
+                }
+            })
             
         }
         
