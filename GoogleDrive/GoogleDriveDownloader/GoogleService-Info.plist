@@ -36,5 +36,7 @@
 	<string>1:23650015918:ios:e7319f1be7192848</string>
 	<key>DATABASE_URL</key>
 	<string>https://apps-review-flag.firebaseio.com</string>
+	<key>FIREBASE_ANALYTICS_COLLECTION_DEACTIVATED</key>
+	<string>YES</string>
 </dict>
 </plist>

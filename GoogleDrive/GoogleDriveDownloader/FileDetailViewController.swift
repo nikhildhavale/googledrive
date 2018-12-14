@@ -4,7 +4,7 @@
 //
 //  Created by Nikhil Modi on 12/14/18.
 //  Copyright © 2018 Bá Anh Nguyễn. All rights reserved.
-//
+// This will show the file title and downloading button
 
 import UIKit
 import SafariServices
@@ -45,6 +45,7 @@ class FileDetailViewController: UIViewController {
             
         }
     }
+    /// This function change the title of button based on existance of the fild
     func changeButtonTitle(){
         if fileExists {
             buttonToDownloadOrView.setTitle("View", for: .normal)
@@ -54,6 +55,7 @@ class FileDetailViewController: UIViewController {
             
         }
     }
+    /// This IBAction will download the file. if downloaded it will show it on in app webview
     @IBAction func viewOrDownloadButtonClicked(_ sender: Any) {
         if !fileExists {
             downloadFile()
@@ -62,11 +64,12 @@ class FileDetailViewController: UIViewController {
         }
         else {
             if let url = destinationURL {
-                self.performSegue(withIdentifier: Identifiers.showActualFile, sender: url)
+                //self.performSegue(withIdentifier: Identifiers.showActualFile, sender: url)
+                UIApplication.shared.open(url, options: [:], completionHandler: nil)
             }
         }
     }
-
+    /// This function downloads file to destination URL
     func downloadFile(){
         if let driveFile = file {
             guard  let fileIdentifier =  driveFile.identifier else {
@@ -83,6 +86,7 @@ class FileDetailViewController: UIViewController {
                             self.changeButtonTitle()
                         }
                         catch{
+                            /// We could try to convert it to PDF then show the file. It might be possible that pdf converstion may not be possbile then same error will occur. It can be executed but I have not implimented it for now
                             self.showAlertOK(title: "Error", message: "Could not download file.")
                         }
                         self.buttonToDownloadOrView.isEnabled = true

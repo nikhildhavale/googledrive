@@ -87,7 +87,7 @@ class ListOfFilesTableViewController: UITableViewController,GIDSignInDelegate, G
     }
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        if  pageToken != nil {
+        if  pageToken != nil && GIDSignIn.sharedInstance()!.hasAuthInKeychain() {
             return self.fileArray.count + 1 
 
         }

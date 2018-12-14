@@ -21,7 +21,7 @@ class WebViewController: UIViewController {
             NSLayoutConstraint.activate([wKWebView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor),wKWebView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor),wKWebView.leftAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leftAnchor),wKWebView.rightAnchor.constraint(equalTo: view.safeAreaLayoutGuide.rightAnchor)])
         }
     }
-    
+    /// This IBAction will dismiss the file viewer
     @IBAction func doneButtonClicked(_ sender: Any) {
         self.dismiss(animated: true, completion: nil)
     }
