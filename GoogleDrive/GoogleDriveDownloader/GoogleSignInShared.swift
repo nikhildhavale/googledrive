@@ -15,6 +15,7 @@ class GoogleSignInShared:NSObject {
    static var shared = GoogleSignInShared()
     let gtlDriveService = GTLRDriveService()
     var authorizer:GTMFetcherAuthorizationProtocol?
+    ///Initialise the google sdk
     func setupGoogleSignIn(){
         var error:NSError?
         GGLContext.sharedInstance()?.configureWithError(&error)

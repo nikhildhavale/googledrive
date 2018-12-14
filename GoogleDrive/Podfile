@@ -6,7 +6,6 @@ target 'GoogleDriveDownloader' do
   use_frameworks!
 
   # Pods for GoogleDriveDownloader
-  pod 'Material', '2.9.4'
   pod 'GoogleAPIClientForREST/Drive', '~> 1.2.1'
   pod 'Google/SignIn', '~> 3.0.3'
 

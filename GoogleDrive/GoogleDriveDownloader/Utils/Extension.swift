@@ -8,26 +8,13 @@
 
 import Foundation
 import UIKit
-extension UserDefaults{
-    static func saveCustomObject(obj:Any,for key:String){
-            let ecodedObject =  NSKeyedArchiver.archivedData(withRootObject: obj)
-            self.standard.set(ecodedObject, forKey: key)
- 
-
-    }
-    static func getCustomObjectfor(Key:String)->Any?{
-        guard let encodedObject = self.standard.object(forKey: Key) as? Data else {
-            return nil
-        }
-       return NSKeyedUnarchiver.unarchiveObject(with: encodedObject)
-    }
-}
+/// This extension provide covience to convert data to string
 extension Data {
     func converDataToString() -> String{
         return String(data: self, encoding: .utf8) ?? ""
     }
 }
-
+/// This is needed in UIAlert
 extension UIApplication {
     
     var frontmostViewController: UIViewController? {
@@ -45,6 +32,7 @@ extension UIApplication {
     }
     
 }
+/// This is provide convienence to sow alerts.
 extension UIViewController{
     func showAlertOK(title:String,message:String){
         print("show alert \(message)")

@@ -21,20 +21,9 @@ class LoginViewController: UIViewController {
             toggleSignInSignOutUI()
         }
     }
-    func refreshListOfFiles(){
-        for child in self.childViewControllers {
-            if let listOfFilesController = child as? ListOfFilesTableViewController {
-                listOfFilesController.gtlQuery()
-                break
-            }
-        }
-    }
-    @objc func signInDone(notificaton:Notification){
-        refreshListOfFiles()
-        toggleSignInSignOutUI()
 
-    }
 
+    /// This function does inital ui setup
     func setUpUI(){
         signInButton.addTarget(self, action: #selector(self.loginButtonClicked), for: .touchUpInside)
         signOut.addTarget(self, action: #selector(signOutClicked), for: .touchUpInside)
@@ -46,7 +35,7 @@ class LoginViewController: UIViewController {
         toggleSignInSignOutUI()
         
     }
-    
+    /// This function changes UI for sign out and sign in
     func toggleSignInSignOutUI(){
         if !GIDSignIn.sharedInstance()!.hasAuthInKeychain() {
             self.navigationItem.rightBarButtonItem = UIBarButtonItem(customView: signInButton)
@@ -54,10 +43,11 @@ class LoginViewController: UIViewController {
         }
         else{
             self.navigationItem.rightBarButtonItem = UIBarButtonItem(customView: signOut)
-            refreshListOfFiles()
+           // refreshListOfFiles()
             
         }
     }
+    /// This function changes performs signout
     @objc func signOutClicked(){
         GIDSignIn.sharedInstance().signOut()
         for child in self.childViewControllers {
@@ -69,6 +59,7 @@ class LoginViewController: UIViewController {
         toggleSignInSignOutUI()
         
     }
+    /// This function changes performs login
     @objc func loginButtonClicked(){
         if GIDSignIn.sharedInstance()!.hasAuthInKeychain(){
             GIDSignIn.sharedInstance()?.signInSilently()

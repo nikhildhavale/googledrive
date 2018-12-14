@@ -21,6 +21,7 @@ class FileDetailViewController: UIViewController {
         super.viewDidLoad()
        setUpUI()
     }
+    /// This function does inital ui setup 
     func setUpUI(){
         fileName.text = file?.name
         if let driveFile = file {
