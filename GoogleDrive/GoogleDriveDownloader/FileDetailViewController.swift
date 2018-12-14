@@ -64,8 +64,7 @@ class FileDetailViewController: UIViewController {
         }
         else {
             if let url = destinationURL {
-                //self.performSegue(withIdentifier: Identifiers.showActualFile, sender: url)
-                UIApplication.shared.open(url, options: [:], completionHandler: nil)
+                self.performSegue(withIdentifier: Identifiers.showActualFile, sender: url)
             }
         }
     }
@@ -79,9 +78,12 @@ class FileDetailViewController: UIViewController {
             
             GoogleSignInShared.shared.gtlDriveService.executeQuery(query, completionHandler: {(ticket,gtlrData,error) in
                 if let gtlrDataObject = gtlrData as? GTLRDataObject {
-                    if let url = self.destinationURL {
+                    if var url = self.destinationURL {
                         do {
                           try  gtlrDataObject.data.write(to: url)
+                            var resourceValues = URLResourceValues()
+                            resourceValues.isExcludedFromBackup = true
+                          try  url.setResourceValues(resourceValues)
                             self.fileExists = true
                             self.changeButtonTitle()
                         }
