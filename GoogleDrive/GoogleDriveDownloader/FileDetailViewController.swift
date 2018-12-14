@@ -71,10 +71,6 @@ class FileDetailViewController: UIViewController {
                 return
             }
             let query = GTLRDriveQuery_FilesGet.queryForMedia(withFileId: fileIdentifier)
-            
-//            let downloadRequest = GoogleSignInShared.shared.gtlDriveService.request(for: query) as URLRequest
-//            let fetcher = GoogleSignInShared.shared.gtlDriveService.fetcherService.fetcher(with: downloadRequest)
-//            fetcher.destinationFileURL = destinationURL
             GoogleSignInShared.shared.gtlDriveService.executeQuery(query, completionHandler: {(ticket,gtlrData,error) in
                 if let gtlrDataObject = gtlrData as? GTLRDataObject {
                     if let url = self.destinationURL {
@@ -87,39 +83,9 @@ class FileDetailViewController: UIViewController {
                             print(error)
                         }
                         self.buttonToDownloadOrView.isEnabled = true
-
                     }
                 }
             })
-            
-//            fetcher.beginFetch { (data, error) in
-//                if let error = error {
-//                    self.showAlertOK(title: "Error", message: error.localizedDescription)
-//                }
-//                print(data?.converDataToString())
-//            }
-//
-//            fetcher.downloadProgressBlock = { (bytesWritten, totalBytesWritten, totalBytesExpectedToWrite) in
-//                print((bytesWritten, totalBytesWritten, totalBytesExpectedToWrite))
-//
-//                var fileSize = totalBytesExpectedToWrite
-//
-//                if totalBytesExpectedToWrite < 0 { // URLRequest cannot estimate fileSize then take it from queried file info.
-//
-//                    fileSize = driveFile.size?.int64Value ?? 0
-//                }
-//
-//                let progressValue = NSNumber(value: totalBytesWritten).floatValue / NSNumber(value: fileSize).floatValue
-//                self.progressView.progress = progressValue
-//
-//                if progressValue == 1.0 {
-//                    self.buttonToDownloadOrView.isEnabled = true
-//                    self.buttonToDownloadOrView.setTitle("View", for: .normal)
-//
-//                } else {
-//
-//                }
-//            }
             
         }
         
