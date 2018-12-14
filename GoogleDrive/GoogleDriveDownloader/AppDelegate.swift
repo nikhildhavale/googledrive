@@ -18,13 +18,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         
-//        window = UIWindow(frame: UIScreen.main.bounds)
-//        let rootVC = CloudFileBrowserViewController()
-//        rootVC.title = "Google Drive Browser"
-//        let nav = UINavigationController.init(rootViewController: rootVC)
-//        window!.rootViewController = nav
-//        window!.makeKeyAndVisible()
-        
         // GOOGLE
         // Initialize sign-in
         GoogleSignInShared.shared.setupGoogleSignIn()

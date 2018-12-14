@@ -16,7 +16,10 @@ class LoginViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         setUpUI()
-
+        if GIDSignIn.sharedInstance()!.hasAuthInKeychain(){
+            GIDSignIn.sharedInstance()?.signInSilently()
+            toggleSignInSignOutUI()
+        }
     }
     func refreshListOfFiles(){
         for child in self.childViewControllers {
@@ -27,9 +30,9 @@ class LoginViewController: UIViewController {
         }
     }
     @objc func signInDone(notificaton:Notification){
-        toggleSignInSignOutUI()
         refreshListOfFiles()
-        
+        toggleSignInSignOutUI()
+
     }
 
     func setUpUI(){
@@ -45,7 +48,7 @@ class LoginViewController: UIViewController {
     }
     
     func toggleSignInSignOutUI(){
-        if UserDefaults.getCustomObjectfor(Key: Keys.userInfo) == nil {
+        if !GIDSignIn.sharedInstance()!.hasAuthInKeychain() {
             self.navigationItem.rightBarButtonItem = UIBarButtonItem(customView: signInButton)
             
         }
@@ -57,7 +60,12 @@ class LoginViewController: UIViewController {
     }
     @objc func signOutClicked(){
         GIDSignIn.sharedInstance().signOut()
-        UserDefaults.standard.removeObject(forKey: Keys.userInfo)
+        for child in self.childViewControllers {
+            if let listOfFilesController = child as? ListOfFilesTableViewController {
+                listOfFilesController.clearFileList()
+                break
+            }
+        }
         toggleSignInSignOutUI()
         
     }

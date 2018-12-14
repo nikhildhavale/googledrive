@@ -55,6 +55,11 @@ class ListOfFilesTableViewController: UITableViewController,GIDSignInDelegate, G
             
         })
     }
+    func clearFileList(){
+        self.fileArray.removeAll()
+        self.tableView.reloadData()
+
+    }
     // MARK: - Table view data source
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
@@ -97,6 +102,9 @@ class ListOfFilesTableViewController: UITableViewController,GIDSignInDelegate, G
             
         } else {
             GoogleSignInShared.shared.gtlDriveService.authorizer = user.authentication.fetcherAuthorizer()
+            if let parent = self.parent as? LoginViewController {
+                parent.toggleSignInSignOutUI()
+            }
             self.gtlQuery()
             
             //navigationItem.rightBarButtonItem = logoutButton

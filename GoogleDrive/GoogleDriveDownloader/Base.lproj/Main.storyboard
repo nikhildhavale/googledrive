@@ -10,10 +10,10 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--Login View Controller-->
+        <!--Content-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController id="BYZ-38-t0r" customClass="LoginViewController" customModule="GoogleDriveDownloader" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController title="Content" id="BYZ-38-t0r" customClass="LoginViewController" customModule="GoogleDriveDownloader" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -44,43 +44,86 @@
             </objects>
             <point key="canvasLocation" x="992.79999999999995" y="26.53673163418291"/>
         </scene>
-        <!--File Detail View Controller-->
+        <!--Navigation Controller-->
+        <scene sceneID="0wD-KA-QtE">
+            <objects>
+                <navigationController id="g9S-aP-KsX" sceneMemberID="viewController">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="CLC-rE-knI">
+                        <rect key="frame" x="0.0" y="20" width="375" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <connections>
+                        <segue destination="em5-qy-zcg" kind="relationship" relationship="rootViewController" id="xKe-AS-tQt"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="vda-DH-ugR" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-902" y="821"/>
+        </scene>
+        <!--File View-->
+        <scene sceneID="qlc-q7-Sva">
+            <objects>
+                <viewController id="em5-qy-zcg" customClass="WebViewController" customModule="GoogleDriveDownloader" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="9Fx-GP-asT">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <viewLayoutGuide key="safeArea" id="wqY-Nk-41X"/>
+                    </view>
+                    <navigationItem key="navigationItem" title="File View" id="aTZ-my-Tzh">
+                        <barButtonItem key="rightBarButtonItem" style="done" systemItem="done" id="kxc-HN-4Ld">
+                            <connections>
+                                <action selector="doneButtonClicked:" destination="em5-qy-zcg" id="3vX-cK-FxH"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="31N-gc-jCU" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-179" y="816"/>
+        </scene>
+        <!--File Detail-->
         <scene sceneID="L6S-r6-yeM">
             <objects>
-                <viewController id="oSj-s0-qVG" customClass="FileDetailViewController" customModule="GoogleDriveDownloader" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController title="File Detail" id="oSj-s0-qVG" customClass="FileDetailViewController" customModule="GoogleDriveDownloader" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="Ytj-VH-Oyg">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="ZQH-5F-U7s">
-                                <rect key="frame" x="137.5" y="238.5" width="100" height="190"/>
+                                <rect key="frame" x="30" y="227.5" width="315" height="212"/>
                                 <subviews>
                                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="fileimage" translatesAutoresizingMaskIntoConstraints="NO" id="kCw-YU-Sh5">
-                                        <rect key="frame" x="0.0" y="0.0" width="100" height="100"/>
+                                        <rect key="frame" x="107.5" y="0.0" width="100" height="100"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="100" id="SZT-Hq-tOL"/>
                                             <constraint firstAttribute="width" secondItem="kCw-YU-Sh5" secondAttribute="height" multiplier="1:1" id="vic-FK-eED"/>
                                         </constraints>
                                     </imageView>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zWG-If-snU">
-                                        <rect key="frame" x="29" y="120" width="42" height="20"/>
+                                        <rect key="frame" x="136.5" y="120" width="42" height="20"/>
                                         <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="17"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hkp-wf-P1A">
-                                        <rect key="frame" x="15.5" y="160" width="69" height="30"/>
+                                        <rect key="frame" x="123" y="160" width="69" height="30"/>
                                         <state key="normal" title="Download"/>
                                         <connections>
                                             <action selector="viewOrDownloadButtonClicked:" destination="oSj-s0-qVG" eventType="touchUpInside" id="JpD-B1-cSK"/>
                                         </connections>
                                     </button>
+                                    <progressView opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="BA2-Ao-Q9n">
+                                        <rect key="frame" x="82.5" y="210" width="150" height="2"/>
+                                    </progressView>
                                 </subviews>
                             </stackView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
+                            <constraint firstItem="ZQH-5F-U7s" firstAttribute="leading" secondItem="g46-QE-J39" secondAttribute="leading" constant="30" id="20W-NM-TIZ"/>
                             <constraint firstItem="ZQH-5F-U7s" firstAttribute="centerX" secondItem="Ytj-VH-Oyg" secondAttribute="centerX" id="5Cz-e2-DxL"/>
+                            <constraint firstItem="g46-QE-J39" firstAttribute="trailing" secondItem="ZQH-5F-U7s" secondAttribute="trailing" constant="30" id="Wr6-sU-bPT"/>
                             <constraint firstItem="ZQH-5F-U7s" firstAttribute="centerY" secondItem="Ytj-VH-Oyg" secondAttribute="centerY" id="p9h-4O-gjT"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="g46-QE-J39"/>
@@ -88,6 +131,8 @@
                     <connections>
                         <outlet property="buttonToDownloadOrView" destination="hkp-wf-P1A" id="Pty-UN-8CG"/>
                         <outlet property="fileName" destination="zWG-If-snU" id="E0e-s5-hWa"/>
+                        <outlet property="progressView" destination="BA2-Ao-Q9n" id="xYx-zb-yPm"/>
+                        <segue destination="g9S-aP-KsX" kind="presentation" identifier="showActualFile" id="WuR-Gr-eKW"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="3FY-oA-wgX" userLabel="First Responder" sceneMemberID="firstResponder"/>
